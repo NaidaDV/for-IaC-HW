@@ -1,0 +1,7 @@
+
+- name: Installing nginx + php
+  hosts: 127.0.0.1
+  become: yes
+  roles:
+    - nginx-role
+    - php-role

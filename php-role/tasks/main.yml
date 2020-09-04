@@ -1,0 +1,19 @@
+---
+  - name: add epel repo
+    yum:
+      name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.$
+      state: present
+
+  - name: add remi repo
+    yum:
+      name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+      state: present
+
+  - name: install dnf-utils
+    dnf:
+      name: dnf-utils
+      state: present
+
+  - name: install php 7.4
+    dnf:
+     name: '@php:remi-7.4'

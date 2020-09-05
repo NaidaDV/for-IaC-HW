@@ -40,7 +40,7 @@
       - restart php-fpm
   
   - name: Touch index.php
-  file:
+    file:
     path: /usr/share/nginx/html/index.php
     state: touch
   

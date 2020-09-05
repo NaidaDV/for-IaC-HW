@@ -41,8 +41,8 @@
   
   - name: Touch index.php
     file:
-    path: /usr/share/nginx/html/index.php
-    state: touch
+      path: /usr/share/nginx/html/index.php
+      state: touch
   
   - name: Insert phpinfo in index.php
     blockinfile:

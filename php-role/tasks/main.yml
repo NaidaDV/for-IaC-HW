@@ -38,3 +38,22 @@
         - php-curl
     notify:
       - restart php-fpm
+  
+  - name: Touch index.php
+  file:
+    path: /usr/share/nginx/html/index.php
+    state: touch
+  
+  - name: Insert phpinfo in index.php
+    blockinfile:
+      path: /usr/share/nginx/html/index.php
+      block: |
+        <?php
+        // Show all information, defaults to INFO_ALL
+        phpinfo();
+        // Show just the module information.
+        // phpinfo(8) yields identical results.
+        phpinfo(INFO_MODULES);
+        ?>
+    notify:
+      - restart nginx

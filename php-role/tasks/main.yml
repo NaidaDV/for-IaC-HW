@@ -17,3 +17,24 @@
   - name: install php 7.4
     dnf:
      name: '@php:remi-7.4'
+     
+  - name: install php packages
+    yum:
+      name: "{{ item }}"
+      state: latest 
+    with_items:
+        - php-common 
+        - php-mbstring 
+        - php-xmlrpc 
+        - php-soap 
+        - php-gd 
+        - php-xml 
+        - php-intl 
+        - php-mysql 
+        - php-cli 
+        - php-mcrypt 
+        - php-ldap 
+        - php-zip 
+        - php-curl
+    notify:
+      - restart php-fpm

@@ -16,7 +16,7 @@
 
   - name: install php 7.4
     dnf:
-     name: '@php:remi-7.4'
+      name: '@php:remi-7.4'
      
   - name: install php packages
     yum:

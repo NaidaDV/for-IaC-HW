@@ -36,13 +36,10 @@
         - php-ldap 
         - php-zip 
         - php-curl
+        - php-opcache
+        
     notify:
       - restart php-fpm
-  
-  - name: Touch index.php
-    file:
-      path: /usr/share/nginx/html/index.php
-      state: touch
   
   - name: Ansible copy files remote to remote
     copy:

@@ -2,6 +2,7 @@
 - name: Installing nginx + php
   hosts: 127.0.0.1
   become: yes
+  include_vars: vars.yml
   roles:
     - nginx-role
     - php-role

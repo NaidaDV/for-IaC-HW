@@ -1,0 +1,14 @@
+---
+  - name: Unarchive wordpress files that need to be downloaded 
+    unarchive:
+      src: https://wordpress.org/latest.tar.gz
+      dest: /usr/share/nginx/html/
+
+  - name: get wp-config.php from templete
+    template:
+      src: wp-config.j2
+      dest: /usr/share/nginx/html/
+      mode: 777
+    notify:
+      - restart php-fpm
+      - restart nginx

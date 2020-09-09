@@ -16,7 +16,7 @@
 
   - name: install php 7.4
     dnf:
-     name: '@php:remi-7.4'
+      name: '@php:remi-7.4'
      
   - name: install php packages
     yum:
@@ -28,7 +28,7 @@
         - php-xmlrpc 
         - php-soap 
         - php-gd 
-        - php-xml 
+        - php-xml
         - php-intl 
         - php-mysql 
         - php-cli 
@@ -40,20 +40,13 @@
       - restart php-fpm
   
   - name: Touch index.php
-  file:
-    path: /usr/share/nginx/html/index.php
-    state: touch
-  
-  - name: Insert phpinfo in index.php
-    blockinfile:
+    file:
       path: /usr/share/nginx/html/index.php
-      block: |
-        <?php
-        // Show all information, defaults to INFO_ALL
-        phpinfo();
-        // Show just the module information.
-        // phpinfo(8) yields identical results.
-        phpinfo(INFO_MODULES);
-        ?>
+      state: touch
+  
+  - name: Ansible copy files remote to remote
+    copy:
+      src: php.conf
+      dest: /etc/nginx/default.d/
     notify:
-      - restart nginx
+       - restart nginx

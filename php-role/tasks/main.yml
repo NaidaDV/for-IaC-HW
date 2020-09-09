@@ -36,6 +36,8 @@
         - php-ldap 
         - php-zip 
         - php-curl
+        - php-opcache
+        
     notify:
       - restart php-fpm
   
